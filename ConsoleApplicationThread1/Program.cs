@@ -20,6 +20,9 @@ namespace ConsoleApplicationThread1
             Thread something2 = new Thread(new ThreadStart(Encounting2));
             something2.Start();
 
+            Thread something3 = new Thread(new ThreadStart(Encounting3));
+            something3.Start();
+
 
             for (int y = 10; y < 100; y++)
             {
@@ -56,6 +59,15 @@ namespace ConsoleApplicationThread1
             for (int i = 0; i < 100; i++)
             {
                 Console.WriteLine("Thread result \t\tE2{0}", i);
+                Thread.Sleep(3);
+            }
+        }
+
+        public static void Encounting3()
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                Console.WriteLine("Thread result \t\t\tE3{0}", i);
                 Thread.Sleep(3);
             }
         }
