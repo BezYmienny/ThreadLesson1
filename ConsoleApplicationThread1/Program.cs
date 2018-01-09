@@ -15,20 +15,22 @@ namespace ConsoleApplicationThread1
     {
         static void Main(string[] args)
         {
-            Thread something = new Thread(new ThreadStart(ThreadMethod));
-            something.IsBackground = true;
-            something.Start();
+            Thread something = new Thread(new ParameterizedThreadStart(ThreadMethod));
+            //something.IsBackground = true;
+            something.Start(5);
             //Console.ReadKey();
 
         }
 
    
 
-        public static void ThreadMethod()
+        public static void ThreadMethod(object o)
         {
-            for (int i=0; i < 10; i++)
+            //int param = (int)o;
+
+            for (int i=0; i < (int)o; i++)
             {
-                Console.WriteLine("Thread Proc \t {0}", i);
+                Console.WriteLine("Thread Proc \t {0} from {1}", i,(int)o);
                 Thread.Sleep(1000);
             }
         }
