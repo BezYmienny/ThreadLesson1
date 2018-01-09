@@ -32,7 +32,7 @@ namespace ConsoleApplicationThread1
                     something.Join();
                 else
                     something2.Join();
-
+                // test branch
             }
             Console.ReadKey();
 
