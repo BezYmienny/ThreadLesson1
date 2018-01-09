@@ -8,7 +8,8 @@ using System.Threading;
 namespace ConsoleApplicationThread1
 {
 
-    // Thius app is my excercises with Thread Class
+    // This app is my excercises with Thread Class
+    // In my opinion threads are much unpredictable - I can't force to jump from thread to thread
 
     class Program
     {
@@ -23,20 +24,29 @@ namespace ConsoleApplicationThread1
             something.Start();
             something2.Start();
             something3.Start();
-            Thread.Sleep(0);
+            //Thread.Sleep(0);
 
-            for (int y = 1; y < 100; y++)
+            for (int y = 1; y < 10; y++)
             {
                 Console.WriteLine("Main loop {0}", y);
 
                 if (IsThird(y))
+                {
                     something3.Join();
+                    Thread.Sleep(0);
+                }
                 else if (IsOdd(y))
+                {
                     something2.Join();
+                    Thread.Sleep(0);
+                }
                 else
+                {
                     something.Join();
+                    Thread.Sleep(0);
+                }
 
-                Thread.Sleep(0);
+               // Thread.Sleep(0);
             }
             Console.ReadKey();
 
