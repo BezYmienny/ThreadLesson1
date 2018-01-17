@@ -16,17 +16,25 @@ namespace ConsoleApplicationThread1
 
         static void Main(string[] args)
         {
-            ThreadPool.QueueUserWorkItem((s) =>
-            {
+            ThreadPool.QueueUserWorkItem(Threadproc);
+            Console.WriteLine("Main thread does some work, then sleeps.");
+            Thread.Sleep(1000);
 
-                Console.WriteLine("Working on thread from threadpool .....");
-                //Thread.Sleep(1000);
-            });
-            
+            Console.WriteLine("Main thread exits.");
             Console.ReadKey();
 
             
         }
+
+        static void Threadproc(object o)
+             
+            {
+
+            Thread.Sleep(3000);
+            Console.WriteLine("Working on thread from threadpool .....");
+                
+                
+            }
 
    
     }
