@@ -16,25 +16,15 @@ namespace ConsoleApplicationThread1
 
         static void Main(string[] args)
         {
-            bool stopped = false;
-
-            Thread t= new Thread(new ThreadStart ( () =>
+            ThreadPool.QueueUserWorkItem((s) =>
             {
 
-                while(!stopped)
-                {
-                    Console.WriteLine("Running .....");
-                    Thread.Sleep(1000);
-                }
-                
-            }));
-
-            t.Start();
-            Console.WriteLine("Press oany key to exit");
+                Console.WriteLine("Working on thread from threadpool .....");
+                //Thread.Sleep(1000);
+            });
+            
             Console.ReadKey();
 
-            stopped = true;
-            t.Join();
             
         }
 
